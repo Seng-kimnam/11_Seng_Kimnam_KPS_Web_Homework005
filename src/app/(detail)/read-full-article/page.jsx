@@ -1,12 +1,7 @@
-import React from "react";
-import DetailComponent from "./_components/DetailComponent";
+const { default: DetailComponent } = require("./_components/DetailComponent");
 
-const ReadArticlePage = () => {
-  return (
-    <>
-      <DetailComponent />
-    </>
-  );
+const ReadArticle = () => {
+  return <DetailComponent />;
 };
 
-export default ReadArticlePage;
+export default ReadArticle;

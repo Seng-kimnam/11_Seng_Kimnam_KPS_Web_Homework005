@@ -1,17 +1,24 @@
-    // function for get all book by id 
-    export const getArticleByIdType = async (id , type ) =>     {
-        // "use server"
-        const default_api = `https://nextjs-homework005.vercel.app/api/${type}/${id}`
-        // const API_URL = `${default_api}/${type === "book"? "book" : "cartoon"}/${id}` // tenary to get specific type 
+export const getArticleByIdType = async (id, type) => {
+    if (!id || !type) {
+        throw new Error("Invalid ID or type");
+    }
 
-        try{
-        const response = await fetch(default_api);
-        const {payload} = await response.json();
+    const default_api = "https://nextjs-homework005.vercel.app/api"; // Ensure no trailing slash
+    const endpoint = type === "book" ? "book" : "cartoon";
     
+    const API_URL = `${default_api}/${endpoint}/${id}`;
+
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const { payload } = await response.json();
         return payload;
-    }catch(error){
-        console.error(error);
+    } catch (error) {
+        console.error("Fetch error:", error);
         throw error;
     }
-        }
-    
+};

@@ -1,6 +1,7 @@
+"use client";
 import FilterComponent from "./FilterComponent";
 
-const HeaderContent = ({ pathname }) => {
+const HeaderContent = ({ pathname, data }) => {
   return (
     <article>
       <div className="flex justify-between">
@@ -13,7 +14,7 @@ const HeaderContent = ({ pathname }) => {
             ? "Old School Cartoons"
             : ""}
         </p>
-        {pathname === "/" ? "" : <FilterComponent />}
+        {pathname === "/" ? "" : <FilterComponent data={data} />}
       </div>
       <hr className="w-[96%] flex m-0 mx-auto mt-4 cyan-text" />
     </article>

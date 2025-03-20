@@ -5,9 +5,9 @@ export const getAllCartoonService = async () => {
            const response = await  fetch(API_URL);
     // destructure this api because it response conatin with payload array object 
 
-           const {payload}  = await response.json();
+           const {payload}  = await response.json();    
            return payload;
     }catch(err){
-        throw new Error('Failed to fetch cartoons');
+        throw new Error('Failed to fetch cartoons' , err);
     }
 }
