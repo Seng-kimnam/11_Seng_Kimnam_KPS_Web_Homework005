@@ -13,7 +13,9 @@ import { usePathname, useRouter } from "next/navigation";
 
 const FilterComponent = ({ data }) => {
   const router = useRouter();
+
   const pathname = usePathname();
+
   const path =
     pathname === "/book-category" ? "All Books" : "Old School Cartoons";
   const [selectedName, setSelectedName] = React.useState(path); // Default title

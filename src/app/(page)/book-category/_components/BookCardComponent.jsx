@@ -10,11 +10,10 @@ const BookCardComponent = ({ BookLists }) => {
   const searchParams = useSearchParams();
   const id = searchParams.get("query"); // query by type and id
   const title = searchParams.get("search"); // search by title
-  console.log(title);
 
   useEffect(() => {
     let filterdBook = BookLists;
-
+    // search by title
     if (title) {
       filterdBook = BookLists.filter((book) =>
         book.book_title.toLowerCase().includes(title.toLowerCase())
@@ -23,6 +22,7 @@ const BookCardComponent = ({ BookLists }) => {
 
       return;
     }
+    // filter by id
     if (id) {
       const filterBook = BookLists.filter((book) => book.book_cate_id == id);
       setBook(filterBook);
